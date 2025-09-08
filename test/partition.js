@@ -42,4 +42,18 @@ QUnit.module("Тестируем функцию partition", function() {
             ]
         ]);
     });
+
+    QUnit.test("Корректно обрабатывает пустой массив", function(assert) {
+        const result = partition([], num => num % 2 === 0);
+        assert.deepEqual(result, [[], []]);
+    });
+
+    QUnit.test("Правильно разделяет элементы разных типов", function(assert) {
+        const result = partition([1, 'hello', 3, 'world', 4], (item) => typeof item === 'number');
+        assert.deepEqual(result, [
+            [1, 3, 4],
+            ['hello', 'world']
+        ]);
+    });
+
 });
