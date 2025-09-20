@@ -56,4 +56,15 @@ QUnit.module("Тестируем функцию partition", function() {
         ]);
     });
 
+    QUnit.test("Выводит ошибку, если первый аргумент не массив", function(assert) {
+    assert.throws(
+        () => partition('nemassiv', x => x > 0),
+    );
+});
+
+    QUnit.test("Выводит ошибку, если второй аргумент не функция", function(assert) {
+    assert.throws(
+        () => partition([1, 2, 3, 4], 1234),
+    );
+});
 });

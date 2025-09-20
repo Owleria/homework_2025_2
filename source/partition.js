@@ -1,3 +1,5 @@
+'use strict';
+
 /** 
  * Функция partition разделяет входной массив на два подмассива на основе заданного предиката
  * 
@@ -6,7 +8,7 @@
  *                            
  * @returns {Array} массив из двух подмассивов: [элементы, удовлетворяющие предикату, элементы, не удовлетворяющие предикату]
  */ 
-function partition(array, predicate) { 
+const partition = (array, predicate) => {
     if (!Array.isArray(array)) { 
         throw new TypeError('Первый аргумент должен быть массивом.'); 
     } 
@@ -17,13 +19,13 @@ function partition(array, predicate) {
     const pass = []; // подмассив для элементов, удовлетворяющих предикату 
     const fail = [];  // подмассив для элементов, не удовлетворяющих предикату 
  
-    for (let i = 0; i < array.length; i++) { 
-        if (predicate(array[i], i)) { 
-            pass.push(array[i]); 
-        } else { 
-            fail.push(array[i]); 
-        } 
-    } 
+      array.forEach((item, index) => {
+        if (predicate(item, index)) {
+            pass.push(item);
+        } else {
+            fail.push(item);
+        }
+    });
  
     return [pass, fail]; 
 }
